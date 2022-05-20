@@ -1,0 +1,2263 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    110821,       2253]
+NotebookOptionsPosition[    108410,       2204]
+NotebookOutlinePosition[    108860,       2221]
+CellTagsIndexPosition[    108817,       2218]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FindMinimumCostFlow", "[", 
+   RowBox[{
+    GraphicsBox[
+     NamespaceBox["NetworkGraphics",
+      DynamicModuleBox[{Typeset`graph = HoldComplete[
+        Graph[{1, 2, 3, 4, 5, 6}, {
+         Null, {{1, 2}, {2, 3}, {3, 4}, {1, 5}, {5, 6}, {6, 4}, {2, 5}, {3, 
+          6}}}, {ImagePadding -> 0, VertexLabels -> {
+            Placed["Name", Center]}, VertexSize -> {0.4}, VertexStyle -> {
+            GrayLevel[1]}}]], Typeset`boxes, Typeset`boxes$s2d = 
+       GraphicsGroupBox[{{
+          Directive[
+           Opacity[0.7], 
+           Hue[0.6, 0.7, 0.5]], 
+          LineBox[{{
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$2", Automatic, Center]}, {
+             DynamicLocation["VertexID$1", Automatic, Center], 
+             DynamicLocation["VertexID$5", Automatic, Center]}, {
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$3", Automatic, Center]}, {
+             DynamicLocation["VertexID$2", Automatic, Center], 
+             DynamicLocation["VertexID$5", Automatic, Center]}, {
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$4", Automatic, Center]}, {
+             DynamicLocation["VertexID$3", Automatic, Center], 
+             DynamicLocation["VertexID$6", Automatic, Center]}, {
+             DynamicLocation["VertexID$4", Automatic, Center], 
+             DynamicLocation["VertexID$6", Automatic, Center]}, {
+             DynamicLocation["VertexID$5", Automatic, Center], 
+             DynamicLocation["VertexID$6", Automatic, Center]}}]}, {
+          Directive[
+           Hue[0.6, 0.2, 0.8], 
+           EdgeForm[
+            Directive[
+             GrayLevel[0], 
+             Opacity[0.7]]]], 
+          GrayLevel[1], 
+          TagBox[{
+            TagBox[
+             DiskBox[{0., 0.42897706871433555`}, 0.17161351865969598`], 
+             "DynamicName", BoxID -> "VertexID$1"], 
+            InsetBox[
+             FormBox["1", TraditionalForm], 
+             DynamicLocation["VertexID$1", None, Center], BaseStyle -> 
+             "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$1"], 
+          TagBox[{
+            TagBox[
+             
+             DiskBox[{0.8711442467958503, 0.8586977125442921}, 
+              0.17161351865969598`], "DynamicName", BoxID -> "VertexID$2"], 
+            InsetBox[
+             FormBox["2", TraditionalForm], 
+             DynamicLocation["VertexID$2", None, Center], BaseStyle -> 
+             "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$2"], 
+          TagBox[{
+            TagBox[
+             
+             DiskBox[{2.0423402987397195`, 0.8587834669836574}, 
+              0.17161351865969598`], "DynamicName", BoxID -> "VertexID$3"], 
+            InsetBox[
+             FormBox["3", TraditionalForm], 
+             DynamicLocation["VertexID$3", None, Center], BaseStyle -> 
+             "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$3"], 
+          TagBox[{
+            TagBox[
+             
+             DiskBox[{2.9166090548556305`, 0.43030950233408893`}, 
+              0.17161351865969598`], "DynamicName", BoxID -> "VertexID$4"], 
+            InsetBox[
+             FormBox["4", TraditionalForm], 
+             DynamicLocation["VertexID$4", None, Center], BaseStyle -> 
+             "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$4"], 
+          TagBox[{
+            TagBox[
+             DiskBox[{0.8742468617007346, 0.}, 0.17161351865969598`], 
+             "DynamicName", BoxID -> "VertexID$5"], 
+            InsetBox[
+             FormBox["5", TraditionalForm], 
+             DynamicLocation["VertexID$5", None, Center], BaseStyle -> 
+             "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$5"], 
+          TagBox[{
+            TagBox[
+             DiskBox[{2.0448634130927967`, 0.000719583252960454}, 
+              0.17161351865969598`], "DynamicName", BoxID -> "VertexID$6"], 
+            InsetBox[
+             FormBox["6", TraditionalForm], 
+             DynamicLocation["VertexID$6", None, Center], BaseStyle -> 
+             "Graphics"]}, "DynamicName", BoxID -> 
+           "VertexLabelID$6"]}}], $CellContext`flag}, 
+       TagBox[
+        DynamicBox[GraphComputation`NetworkGraphicsBox[
+         3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+         CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+          SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+         ImageSizeCache->{{0.7999999999999998, 
+          89.19999999999999}, {-20.623991454334178`, 15.309424141371405`}}],
+        MouseAppearanceTag["NetworkGraphics"]],
+       AllowKernelInitialization->False,
+       UnsavedVariables:>{$CellContext`flag}]],
+     DefaultBaseStyle->{
+      "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+     FrameTicks->None,
+     ImagePadding->0], ",", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "3", ",", "4", ",", 
+      RowBox[{"-", "3"}], ",", 
+      RowBox[{"-", "4"}], ",", 
+      RowBox[{"-", "1"}]}], "}"}]}], "]"}], "//", "FullForm"}]], "Input",Expre\
+ssionUUID->"37fe0321-46b2-4582-8f3b-8bfd2c22a093"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  GraphicsBox[
+   NamespaceBox["NetworkGraphics",
+    DynamicModuleBox[{Typeset`graph = HoldComplete[
+      Graph[{1, 2, 3, 4, 5, 6}, {
+       Null, {{1, 2}, {2, 3}, {3, 4}, {1, 5}, {5, 6}, {6, 4}, {2, 5}, {3, 
+        6}}}, {ImagePadding -> 0, VertexLabels -> {
+          Placed["Name", Center]}, VertexSize -> {0.4}, VertexStyle -> {
+          GrayLevel[1]}}]], Typeset`boxes, Typeset`boxes$s2d = 
+     GraphicsGroupBox[{{
+        Directive[
+         Opacity[0.7], 
+         Hue[0.6, 0.7, 0.5]], 
+        LineBox[{{
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$2", Automatic, Center]}, {
+           DynamicLocation["VertexID$1", Automatic, Center], 
+           DynamicLocation["VertexID$5", Automatic, Center]}, {
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$3", Automatic, Center]}, {
+           DynamicLocation["VertexID$2", Automatic, Center], 
+           DynamicLocation["VertexID$5", Automatic, Center]}, {
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$4", Automatic, Center]}, {
+           DynamicLocation["VertexID$3", Automatic, Center], 
+           DynamicLocation["VertexID$6", Automatic, Center]}, {
+           DynamicLocation["VertexID$4", Automatic, Center], 
+           DynamicLocation["VertexID$6", Automatic, Center]}, {
+           DynamicLocation["VertexID$5", Automatic, Center], 
+           DynamicLocation["VertexID$6", Automatic, Center]}}]}, {
+        Directive[
+         Hue[0.6, 0.2, 0.8], 
+         EdgeForm[
+          Directive[
+           GrayLevel[0], 
+           Opacity[0.7]]]], 
+        GrayLevel[1], 
+        TagBox[{
+          TagBox[
+           DiskBox[{0., 0.42897706871433555`}, 0.17161351865969598`], 
+           "DynamicName", BoxID -> "VertexID$1"], 
+          InsetBox[
+           FormBox["1", TraditionalForm], 
+           DynamicLocation["VertexID$1", None, Center], BaseStyle -> 
+           "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$1"], 
+        TagBox[{
+          TagBox[
+           
+           DiskBox[{0.8711442467958503, 0.8586977125442921}, 
+            0.17161351865969598`], "DynamicName", BoxID -> "VertexID$2"], 
+          InsetBox[
+           FormBox["2", TraditionalForm], 
+           DynamicLocation["VertexID$2", None, Center], BaseStyle -> 
+           "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$2"], 
+        TagBox[{
+          TagBox[
+           
+           DiskBox[{2.0423402987397195`, 0.8587834669836574}, 
+            0.17161351865969598`], "DynamicName", BoxID -> "VertexID$3"], 
+          InsetBox[
+           FormBox["3", TraditionalForm], 
+           DynamicLocation["VertexID$3", None, Center], BaseStyle -> 
+           "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$3"], 
+        TagBox[{
+          TagBox[
+           
+           DiskBox[{2.9166090548556305`, 0.43030950233408893`}, 
+            0.17161351865969598`], "DynamicName", BoxID -> "VertexID$4"], 
+          InsetBox[
+           FormBox["4", TraditionalForm], 
+           DynamicLocation["VertexID$4", None, Center], BaseStyle -> 
+           "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$4"], 
+        TagBox[{
+          TagBox[
+           DiskBox[{0.8742468617007346, 0.}, 0.17161351865969598`], 
+           "DynamicName", BoxID -> "VertexID$5"], 
+          InsetBox[
+           FormBox["5", TraditionalForm], 
+           DynamicLocation["VertexID$5", None, Center], BaseStyle -> 
+           "Graphics"]}, "DynamicName", BoxID -> "VertexLabelID$5"], 
+        TagBox[{
+          TagBox[
+           
+           DiskBox[{2.0448634130927967`, 0.000719583252960454}, 
+            0.17161351865969598`], "DynamicName", BoxID -> "VertexID$6"], 
+          InsetBox[
+           FormBox["6", TraditionalForm], 
+           DynamicLocation["VertexID$6", None, Center], BaseStyle -> 
+           "Graphics"]}, "DynamicName", BoxID -> 
+         "VertexLabelID$6"]}}], $CellContext`flag}, 
+     TagBox[
+      DynamicBox[GraphComputation`NetworkGraphicsBox[
+       3, Typeset`graph, Typeset`boxes, $CellContext`flag], {
+       CachedValue :> Typeset`boxes, SingleEvaluation -> True, 
+        SynchronousUpdating -> False, TrackedSymbols :> {$CellContext`flag}},
+       ImageSizeCache->{{0.7999999999999998, 
+        89.19999999999999}, {-20.623991454334178`, 15.309424141371405`}}],
+      MouseAppearanceTag["NetworkGraphics"]],
+     AllowKernelInitialization->False,
+     UnsavedVariables:>{$CellContext`flag}]],
+   DefaultBaseStyle->{
+    "NetworkGraphics", FrontEnd`GraphicsHighlightColor -> Hue[0.8, 1., 0.6]},
+   FrameTicks->None,
+   ImagePadding->0], "//", "InputForm"}]], "Input",
+ CellChangeTimes->{{3.862067981995014*^9, 3.862067988635002*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"2cee2bad-91e8-4a57-8c01-0017d6cb48e5"],
+
+Cell["\<\
+Graph[{1, 2, 3, 4, 5, 6}, {UndirectedEdge[1, 2], 
+  UndirectedEdge[2, 3], UndirectedEdge[3, 4], 
+  UndirectedEdge[1, 5], UndirectedEdge[5, 6], 
+  UndirectedEdge[6, 4], UndirectedEdge[2, 5], 
+  UndirectedEdge[3, 6]}, {ImagePadding -> 0, 
+  VertexLabels -> {Placed[\"Name\", Center]}, VertexSize -> {0.4}, 
+  VertexStyle -> {GrayLevel[1]}}]\
+\>", "Output",
+ CellChangeTimes->{3.8620679888370185`*^9},
+ CellLabel->
+  "Out[1]//InputForm=",ExpressionUUID->"a069c26b-0d72-49cf-addc-0a7510e0d920"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"TravelDirections", "[", 
+  RowBox[{"{", "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.862069468581554*^9, 
+  3.8620694939132524`*^9}},ExpressionUUID->"9cf42b48-8278-432e-b1a0-\
+a7bb156c47e1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+  "\"\<11 Wall Street New York City, NY\>\"", "]"}]], "Input",ExpressionUUID->\
+"d397f1d1-da82-4b43-acd4-133ba1b70bcb"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+  "\"\<1234 Charleston Avenue Huntington, WV 25701\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.862069538797755*^9, 3.8620695671972933`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"02e89e6c-a934-4684-926c-e816f89963fd"],
+
+Cell[BoxData[
+ RowBox[{"GeoPosition", "[", 
+  RowBox[{"{", 
+   RowBox[{"38.4119`", ",", 
+    RowBox[{"-", "82.4324`"}]}], "}"}], "]"}]], "Output",
+ CellChangeTimes->{{3.8620695538263683`*^9, 3.8620695681475115`*^9}},
+ CellLabel->"Out[4]=",ExpressionUUID->"0faf8578-1364-48e5-bd93-842ee357e51d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TravelDirections", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+     "\"\<1234 Charleston Avenue Huntington, WV 25701\>\"", "]"}], ",", 
+    RowBox[{
+     RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+     "\"\<1200 Huntington, WV\>\"", "]"}]}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8620695721593695`*^9, 3.862069604683321*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"083af840-52f5-448d-8a7f-2c6c2050110f"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+   TagBox["TravelDirectionsData",
+    "SummaryHead"], "[", 
+   DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = "Ready"}, 
+    TemplateBox[{
+      PaneSelectorBox[{False -> GridBox[{{
+            PaneBox[
+             ButtonBox[
+              DynamicBox[
+               FEPrivate`FrontEndResource["FEBitmaps", "SummaryBoxOpener"]], 
+              ButtonFunction :> (Typeset`open$$ = True), Appearance -> None, 
+              BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+              "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}]], 
+            GraphicsBox[{
+              AbsoluteThickness[1.6], 
+              StyleBox[{
+                
+                FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                 3}, {1, 3, 3}}, {{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 
+                 3}}}, {{{16.559, 9.359}, {9.281, 16.641}, {8.801, 17.121}, {
+                   8, 17.121}, {7.602, 16.641}, {0.32, 9.359}, {0.078, 
+                   9.121}, {0, 8.801}, {0, 8.48}, {0, 8.16}, {0.16, 7.84}, {
+                   0.32, 7.602}, {7.602, 0.32}, {7.84, 0.078}, {8.16, 0}, {
+                   8.48, 0}, {8.801, 0}, {9.121, 0.16}, {9.359, 0.32}, {
+                   16.641, 7.602}, {16.879, 7.84}, {16.961, 8.16}, {16.961, 
+                   8.48}, {16.961, 8.801}, {16.801, 9.121}, {16.559, 
+                   9.359}}, {{16, 8.16}, {8.719, 0.879}, {8.559, 0.719}, {
+                   8.32, 0.719}, {8.16, 0.879}, {0.879, 8.16}, {0.801, 
+                   8.238}, {0.801, 8.32}, {0.801, 8.48}, {0.801, 8.641}, {
+                   0.879, 8.719}, {0.879, 8.801}, {8.16, 16.078}, {8.238, 
+                   16.16}, {8.32, 16.16}, {8.48, 16.16}, {8.641, 16.16}, {
+                   8.719, 16.078}, {8.801, 16.078}, {16.078, 8.801}, {16.16, 
+                   8.719}, {16.16, 8.641}, {16.16, 8.48}, {16.16, 8.32}, {
+                   16.078, 8.238}, {16, 8.16}}}], 
+                
+                FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                 0}}}, {{{11.121, 11.762}, {9.602, 13.52}, {8.078, 11.762}, {
+                   6.559, 10}, {8.879, 10}, {8.801, 9.441}, {8.559, 8.719}, {
+                   7.68, 8.48}, {5.441, 7.84}, {5.121, 5.441}, {5.281, 
+                   4.32}, {6.801, 4.32}, {6.801, 4.398}, {6.559, 6.559}, {
+                   8.16, 7.039}, {9.762, 7.52}, {10.32, 8.879}, {10.48, 10}, {
+                   12.719, 10}}}]}, {
+                FaceForm[
+                 RGBColor[0.478431, 0.478431, 0.478431, 1]]}, StripOnInput -> 
+               False]}, AspectRatio -> 1, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}]], 
+            GridBox[{{
+               RowBox[{
+                 TagBox["\"Start: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  RowBox[{"GeoPosition", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"38.4119`", ",", 
+                    RowBox[{"-", "82.4324`"}]}], "}"}], "]"}], 
+                  "SummaryItem"]}]}, {
+               RowBox[{
+                 TagBox["\"End: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  RowBox[{"GeoPosition", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"38.4192`", ",", 
+                    RowBox[{"-", "82.4452`"}]}], "}"}], "]"}], 
+                  "SummaryItem"]}]}}, 
+             GridBoxAlignment -> {
+              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+             False, GridBoxItemSize -> {
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
+              BaseStyle -> {
+              ShowStringCharacters -> False, NumberMarks -> False, 
+               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+          AutoDelete -> False, 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+          BaselinePosition -> {1, 1}], True -> GridBox[{{
+            PaneBox[
+             ButtonBox[
+              DynamicBox[
+               FEPrivate`FrontEndResource["FEBitmaps", "SummaryBoxCloser"]], 
+              ButtonFunction :> (Typeset`open$$ = False), Appearance -> None, 
+              BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+              "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}]], 
+            GraphicsBox[{
+              AbsoluteThickness[1.6], 
+              StyleBox[{
+                
+                FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                 3}, {1, 3, 3}}, {{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 
+                 3}}}, {{{16.559, 9.359}, {9.281, 16.641}, {8.801, 17.121}, {
+                   8, 17.121}, {7.602, 16.641}, {0.32, 9.359}, {0.078, 
+                   9.121}, {0, 8.801}, {0, 8.48}, {0, 8.16}, {0.16, 7.84}, {
+                   0.32, 7.602}, {7.602, 0.32}, {7.84, 0.078}, {8.16, 0}, {
+                   8.48, 0}, {8.801, 0}, {9.121, 0.16}, {9.359, 0.32}, {
+                   16.641, 7.602}, {16.879, 7.84}, {16.961, 8.16}, {16.961, 
+                   8.48}, {16.961, 8.801}, {16.801, 9.121}, {16.559, 
+                   9.359}}, {{16, 8.16}, {8.719, 0.879}, {8.559, 0.719}, {
+                   8.32, 0.719}, {8.16, 0.879}, {0.879, 8.16}, {0.801, 
+                   8.238}, {0.801, 8.32}, {0.801, 8.48}, {0.801, 8.641}, {
+                   0.879, 8.719}, {0.879, 8.801}, {8.16, 16.078}, {8.238, 
+                   16.16}, {8.32, 16.16}, {8.48, 16.16}, {8.641, 16.16}, {
+                   8.719, 16.078}, {8.801, 16.078}, {16.078, 8.801}, {16.16, 
+                   8.719}, {16.16, 8.641}, {16.16, 8.48}, {16.16, 8.32}, {
+                   16.078, 8.238}, {16, 8.16}}}], 
+                
+                FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                 0}}}, {{{11.121, 11.762}, {9.602, 13.52}, {8.078, 11.762}, {
+                   6.559, 10}, {8.879, 10}, {8.801, 9.441}, {8.559, 8.719}, {
+                   7.68, 8.48}, {5.441, 7.84}, {5.121, 5.441}, {5.281, 
+                   4.32}, {6.801, 4.32}, {6.801, 4.398}, {6.559, 6.559}, {
+                   8.16, 7.039}, {9.762, 7.52}, {10.32, 8.879}, {10.48, 10}, {
+                   12.719, 10}}}]}, {
+                FaceForm[
+                 RGBColor[0.478431, 0.478431, 0.478431, 1]]}, StripOnInput -> 
+               False]}, AspectRatio -> 1, ImageSize -> 
+             Dynamic[{
+               Automatic, 
+                3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                 Magnification])}]], 
+            GridBox[{{
+               RowBox[{
+                 TagBox["\"Start: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  RowBox[{"GeoPosition", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"38.4119`", ",", 
+                    RowBox[{"-", "82.4324`"}]}], "}"}], "]"}], 
+                  "SummaryItem"]}]}, {
+               RowBox[{
+                 TagBox["\"End: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  RowBox[{"GeoPosition", "[", 
+                    RowBox[{"{", 
+                    RowBox[{"38.4192`", ",", 
+                    RowBox[{"-", "82.4452`"}]}], "}"}], "]"}], 
+                  "SummaryItem"]}]}, {
+               RowBox[{
+                 TagBox["\"Total distance: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  
+                  TemplateBox[{
+                   "1.2159699852859303`", "\"mi\"", "miles", "\"Miles\""}, 
+                   "Quantity", SyntaxForm -> Mod], "SummaryItem"]}]}, {
+               RowBox[{
+                 TagBox["\"Total time: \"", "SummaryItemAnnotation"], 
+                 "\[InvisibleSpace]", 
+                 TagBox[
+                  TemplateBox[{"2", "45", 
+                    RowBox[{"\[ThinSpace]", "\"min\""}], 
+                    RowBox[{"\[ThinSpace]", "\"s\""}], "minutes,seconds", 
+                    RowBox[{"{", 
+                    RowBox[{"\"Minutes\"", ",", "\"Seconds\""}], "}"}]}, 
+                   "QuantityMixedUnit2"], "SummaryItem"]}]}}, 
+             GridBoxAlignment -> {
+              "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+             False, GridBoxItemSize -> {
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+             GridBoxSpacings -> {"Columns" -> {{2}}, "Rows" -> {{Automatic}}},
+              BaseStyle -> {
+              ShowStringCharacters -> False, NumberMarks -> False, 
+               PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+          GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+          AutoDelete -> False, 
+          GridBoxItemSize -> {
+           "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+          BaselinePosition -> {1, 1}]}, 
+       Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+     "SummaryPanel"],
+    DynamicModuleValues:>{}], "]"}],
+  TravelDirectionsData[{
+    GeoPosition[{38.4119, -82.4324}], 
+    GeoPosition[{38.4192, -82.4452}]}, <|
+   "Distance" -> 1.956914, "Time" -> 158.805, "BoundingBox" -> {
+      GeoPosition[{38.411254, -82.445214}], 
+      GeoPosition[{38.419197, -82.432386}]}, 
+    "Shape" -> {{{{38.41185, -82.43239000000001}, {
+       38.411570000000005`, -82.43404000000001}, {38.41125, -82.43577}}, {{
+       38.41125, -82.43577}, {38.41227, -82.43607}, {38.41393, -82.43651}, {
+       38.41593, -82.43708}}, {{38.41593, -82.43708}, {
+       38.41474, -82.44398}}, {{38.41474, -82.44398}, {38.41641, -82.44445}, {
+       38.41706, -82.44466}, {38.41774, -82.44481}, {38.41919, -82.44522}}, {{
+       38.41919, -82.44522}}}}, 
+    "Legs" -> {{
+      "Time" -> 158.805, "Distance" -> 1.956914, 
+       "Maneuvers" -> {{
+         "Distance" -> 0.302147, "ManeuverType" -> "Straight", 
+          "StartingPoint" -> {38.41185, -82.43239000000001}, 
+          "EndingPoint" -> {38.41125, -82.43577}, "Path" -> GeoPath[
+            
+            GeoPosition[{{38.41185, -82.43239000000001}, {
+             38.411570000000005`, -82.43404000000001}, {
+             38.41125, -82.43577}}], "TravelPath"], "Narrative" -> 
+          "Continue onto Charleston Avenue", "Time" -> 21.753}, {
+         "Distance" -> 0.532783, "ManeuverType" -> "Right", 
+          "StartingPoint" -> {38.41125, -82.43577}, 
+          "EndingPoint" -> {38.41593, -82.43708}, "Path" -> GeoPath[
+            
+            GeoPosition[{{38.41125, -82.43577}, {38.41227, -82.43607}, {
+             38.41393, -82.43651}, {38.41593, -82.43708}}], "TravelPath"], 
+          "Narrative" -> "Turn right onto 12th Street", "Time" -> 63.93}, {
+         "Distance" -> 0.615418, "ManeuverType" -> "Left", 
+          "StartingPoint" -> {38.41593, -82.43708}, 
+          "EndingPoint" -> {38.41474, -82.44398}, "Path" -> GeoPath[
+            GeoPosition[{{38.41593, -82.43708}, {38.41474, -82.44398}}], 
+            "TravelPath"], "Narrative" -> "Turn left onto 8th Avenue", "Time" -> 
+          44.309}, {
+         "Distance" -> 0.506566, "ManeuverType" -> "Right", 
+          "StartingPoint" -> {38.41474, -82.44398}, 
+          "EndingPoint" -> {38.41919, -82.44522}, "Path" -> GeoPath[
+            
+            GeoPosition[{{38.41474, -82.44398}, {38.41641, -82.44445}, {
+             38.41706, -82.44466}, {38.41774, -82.44481}, {
+             38.41919, -82.44522}}], "TravelPath"], "Narrative" -> 
+          "Turn right onto 8th Street, WV 527", "Time" -> 28.813}, {
+         "Distance" -> 0., "ManeuverType" -> "Finish", 
+          "StartingPoint" -> {38.41919, -82.44522}, 
+          "EndingPoint" -> {38.41919, -82.44522}, "Path" -> GeoPath[
+            GeoPosition[{{38.41919, -82.44522}}], "TravelPath"], "Narrative" -> 
+          "Arrive at destination", "Time" -> 0.}}}}|>],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.862069607116935*^9},
+ CellLabel->"Out[5]=",ExpressionUUID->"5a765269-b537-4bc2-8225-6675ba8c8c1b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TravelDirections", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+      "\"\<1234 Charleston Avenue Huntington, WV 25701\>\"", "]"}], ",", 
+     RowBox[{
+      RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+      "\"\<1200 Huntington, WV\>\"", "]"}]}], "}"}], ",", "\"\<Dataset\>\""}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.8620695721593695`*^9, 3.862069624910885*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"5ae23398-a036-42d8-86ec-f92dd1b9e765"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[
+   DynamicModuleBox[{TypeSystem`NestedGrid`PackagePrivate`$state$$ = <|
+    "InitialData" -> {<|
+       "Description" -> "Continue onto Charleston Avenue", "Distance" -> 
+        Quantity[0.302147, "Kilometers"], "Time" -> 
+        Quantity[21.753, "Seconds"], "ManeuverType" -> "Straight", 
+        "StartingPoint" -> GeoPosition[{38.41185, -82.43239000000001}], 
+        "EndingPoint" -> GeoPosition[{38.41125, -82.43577}], "Path" -> GeoPath[
+          
+          GeoPosition[{{38.41185, -82.43239000000001}, {
+           38.411570000000005`, -82.43404000000001}, {38.41125, -82.43577}}], 
+          "TravelPath"]|>, <|
+       "Description" -> "Turn right onto 12th Street", "Distance" -> 
+        Quantity[0.532783, "Kilometers"], "Time" -> 
+        Quantity[63.93, "Seconds"], "ManeuverType" -> "Right", 
+        "StartingPoint" -> GeoPosition[{38.41125, -82.43577}], "EndingPoint" -> 
+        GeoPosition[{38.41593, -82.43708}], "Path" -> GeoPath[
+          
+          GeoPosition[{{38.41125, -82.43577}, {38.41227, -82.43607}, {
+           38.41393, -82.43651}, {38.41593, -82.43708}}], "TravelPath"]|>, <|
+       "Description" -> "Turn left onto 8th Avenue", "Distance" -> 
+        Quantity[0.615418, "Kilometers"], "Time" -> 
+        Quantity[44.309, "Seconds"], "ManeuverType" -> "Left", 
+        "StartingPoint" -> GeoPosition[{38.41593, -82.43708}], "EndingPoint" -> 
+        GeoPosition[{38.41474, -82.44398}], "Path" -> GeoPath[
+          GeoPosition[{{38.41593, -82.43708}, {38.41474, -82.44398}}], 
+          "TravelPath"]|>, <|
+       "Description" -> "Turn right onto 8th Street, WV 527", "Distance" -> 
+        Quantity[0.506566, "Kilometers"], "Time" -> 
+        Quantity[28.813, "Seconds"], "ManeuverType" -> "Right", 
+        "StartingPoint" -> GeoPosition[{38.41474, -82.44398}], "EndingPoint" -> 
+        GeoPosition[{38.41919, -82.44522}], "Path" -> GeoPath[
+          
+          GeoPosition[{{38.41474, -82.44398}, {38.41641, -82.44445}, {
+           38.41706, -82.44466}, {38.41774, -82.44481}, {
+           38.41919, -82.44522}}], "TravelPath"]|>, <|
+       "Description" -> "Arrive at destination", "Distance" -> 
+        Quantity[0., "Kilometers"], "Time" -> Quantity[0., "Seconds"], 
+        "ManeuverType" -> "Finish", "StartingPoint" -> 
+        GeoPosition[{38.41919, -82.44522}], "EndingPoint" -> 
+        GeoPosition[{38.41919, -82.44522}], "Path" -> GeoPath[
+          GeoPosition[{{38.41919, -82.44522}}], "TravelPath"]|>}, 
+     "AllowEmbedding" -> True, "InitialShape" -> 
+     TypeSystem`PackageScope`HeaderShape[<|{All, "Description"} -> 
+        1, {All, "Distance"} -> 1, {All, "Time"} -> 1, {All, "ManeuverType"} -> 
+        1, {All, "StartingPoint"} -> 1, {All, "EndingPoint"} -> 
+        1, {All, "Path"} -> 1|>, 
+       TypeSystem`PackageScope`Limited[
+        TypeSystem`PackageScope`ColumnShape[
+         TypeSystem`PackageScope`Limited[
+          
+          TypeSystem`PackageScope`RowShape[<|
+           "Description" -> TypeSystem`PackageScope`AtomShape[380.8], 
+            "Distance" -> TypeSystem`PackageScope`AtomShape[75], "Time" -> 
+            TypeSystem`PackageScope`AtomShape[75], "ManeuverType" -> 
+            TypeSystem`PackageScope`AtomShape[89.60000000000001], 
+            "StartingPoint" -> TypeSystem`PackageScope`AtomShape[106], 
+            "EndingPoint" -> TypeSystem`PackageScope`AtomShape[106], "Path" -> 
+            TypeSystem`PackageScope`UnknownShape[False]|>], 
+          DirectedInfinity[1], 7, {All}]], 5, 
+        DirectedInfinity[1], {}]], "InitialType" -> TypeSystem`Vector[
+       TypeSystem`Struct[{
+        "Description", "Distance", "Time", "ManeuverType", "StartingPoint", 
+         "EndingPoint", "Path"}, {
+         TypeSystem`Atom[String], 
+         TypeSystem`Atom[
+          Quantity[1, "Kilometers"]], 
+         TypeSystem`Atom[
+          Quantity[1, "Seconds"]], 
+         TypeSystem`Atom[String], 
+         TypeSystem`Atom[GeoPosition], 
+         TypeSystem`Atom[GeoPosition], TypeSystem`AnyType}], 5], 
+     "Meta" -> <||>, "RowTarget" -> 20, "ColumnTarget" -> 10, "Shape" -> 
+     TypeSystem`PackageScope`HeaderShape[<|{All, "Description"} -> 
+        1, {All, "Distance"} -> 1, {All, "Time"} -> 1, {All, "ManeuverType"} -> 
+        1, {All, "StartingPoint"} -> 1, {All, "EndingPoint"} -> 
+        1, {All, "Path"} -> 1|>, 
+       TypeSystem`PackageScope`Limited[
+        TypeSystem`PackageScope`ColumnShape[
+         TypeSystem`PackageScope`Limited[
+          
+          TypeSystem`PackageScope`RowShape[<|
+           "Description" -> TypeSystem`PackageScope`AtomShape[380.8], 
+            "Distance" -> TypeSystem`PackageScope`AtomShape[75], "Time" -> 
+            TypeSystem`PackageScope`AtomShape[75], "ManeuverType" -> 
+            TypeSystem`PackageScope`AtomShape[89.60000000000001], 
+            "StartingPoint" -> TypeSystem`PackageScope`AtomShape[106], 
+            "EndingPoint" -> TypeSystem`PackageScope`AtomShape[106], "Path" -> 
+            TypeSystem`PackageScope`UnknownShape[False]|>], 
+          DirectedInfinity[1], 7, {All}]], 5, 
+        DirectedInfinity[1], {}]], "Type" -> TypeSystem`Vector[
+       TypeSystem`Struct[{
+        "Description", "Distance", "Time", "ManeuverType", "StartingPoint", 
+         "EndingPoint", "Path"}, {
+         TypeSystem`Atom[String], 
+         TypeSystem`Atom[
+          Quantity[1, "Kilometers"]], 
+         TypeSystem`Atom[
+          Quantity[1, "Seconds"]], 
+         TypeSystem`Atom[String], 
+         TypeSystem`Atom[GeoPosition], 
+         TypeSystem`Atom[GeoPosition], TypeSystem`AnyType}], 5], "Path" -> {},
+      "DisplayedRowCount" -> 5, "DisplayedColumnCount" -> 7, "DataRowCount" -> 
+     5, "DataColumnCount" -> 7, "SortPaths" -> {}, "SortDirections" -> {}, 
+     "HiddenItemsMap" -> Null, "UpdateType" -> 1|>, 
+    TypeSystem`NestedGrid`PackagePrivate`$outputID$$, 
+    TypeSystem`NestedGrid`PackagePrivate`$path$$ = {}, 
+    TypeSystem`NestedGrid`PackagePrivate`$vPos$$ = 1, 
+    TypeSystem`NestedGrid`PackagePrivate`$hPos$$ = 1, 
+    TypeSystem`NestedGrid`PackagePrivate`$grid$$ = 
+    DynamicModule[{TypeSystem`NestedGrid`PackagePrivate`renderedGrid = Deploy[
+        Style[
+         Grid[{{
+            Item[
+             Pane[
+              Annotation[
+               EventHandler[
+                MouseAppearance[
+                 Mouseover["Description", 
+                  Style[
+                  "Description", FontColor -> 
+                   RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                If[
+                  TypeSystem`NestedGrid`PackagePrivate`checkInteractivity[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{
+                   All, "Description"}, 1]]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{
+                All, "Description"}, "ColumnHeader", True], "Mouse"], 
+              ImageSize -> {{1, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], Background -> 
+             GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+            Item[
+             Pane[
+              Annotation[
+               EventHandler[
+                MouseAppearance[
+                 Mouseover["Distance", 
+                  Style[
+                  "Distance", FontColor -> 
+                   RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                If[
+                  TypeSystem`NestedGrid`PackagePrivate`checkInteractivity[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{
+                   All, "Distance"}, 1]]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{
+                All, "Distance"}, "ColumnHeader", True], "Mouse"], 
+              ImageSize -> {{1, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], Background -> 
+             GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+            Item[
+             Pane[
+              Annotation[
+               EventHandler[
+                MouseAppearance[
+                 Mouseover["Time", 
+                  Style[
+                  "Time", FontColor -> 
+                   RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                If[
+                  TypeSystem`NestedGrid`PackagePrivate`checkInteractivity[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{
+                   All, "Time"}, 1]]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{
+                All, "Time"}, "ColumnHeader", True], "Mouse"], 
+              ImageSize -> {{1, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], Background -> 
+             GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+            Item[
+             Pane[
+              Annotation[
+               EventHandler[
+                MouseAppearance[
+                 Mouseover["ManeuverType", 
+                  Style[
+                  "ManeuverType", FontColor -> 
+                   RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                If[
+                  TypeSystem`NestedGrid`PackagePrivate`checkInteractivity[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{
+                   All, "ManeuverType"}, 1]]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{
+                All, "ManeuverType"}, "ColumnHeader", True], "Mouse"], 
+              ImageSize -> {{1, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], Background -> 
+             GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+            Item[
+             Pane[
+              Annotation[
+               EventHandler[
+                MouseAppearance[
+                 Mouseover["StartingPoint", 
+                  Style[
+                  "StartingPoint", FontColor -> 
+                   RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                If[
+                  TypeSystem`NestedGrid`PackagePrivate`checkInteractivity[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{
+                   All, "StartingPoint"}, 1]]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{
+                All, "StartingPoint"}, "ColumnHeader", True], "Mouse"], 
+              ImageSize -> {{1, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], Background -> 
+             GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+            Item[
+             Pane[
+              Annotation[
+               EventHandler[
+                MouseAppearance[
+                 Mouseover["EndingPoint", 
+                  Style[
+                  "EndingPoint", FontColor -> 
+                   RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                If[
+                  TypeSystem`NestedGrid`PackagePrivate`checkInteractivity[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{
+                   All, "EndingPoint"}, 1]]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{
+                All, "EndingPoint"}, "ColumnHeader", True], "Mouse"], 
+              ImageSize -> {{1, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], Background -> 
+             GrayLevel[0.95], Alignment -> {Left, Baseline}], 
+            Item[
+             Pane[
+              Annotation[
+               EventHandler[
+                MouseAppearance[
+                 Mouseover["Path", 
+                  Style[
+                  "Path", FontColor -> 
+                   RGBColor[
+                    0.27450980392156865`, 0.5372549019607843, 
+                    0.792156862745098]]], "LinkHand"], {"MouseClicked", 1} :> 
+                If[
+                  TypeSystem`NestedGrid`PackagePrivate`checkInteractivity[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                  TypeSystem`NestedGrid`PackagePrivate`updateState[
+                  TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                   TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][{
+                   All, "Path"}, 1]]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{
+                All, "Path"}, "ColumnHeader", True], "Mouse"], 
+              ImageSize -> {{1, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], Background -> 
+             GrayLevel[0.95], Alignment -> {Left, Baseline}]}, {
+            Item[
+             Pane[
+              Annotation["Continue onto Charleston Avenue", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1, 
+                 Key["Description"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{380.8, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"0.302147`", "\"km\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1, 
+                 Key["Distance"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"21.753`", "\"s\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1, 
+                 Key["Time"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation["Straight", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1, 
+                 Key["ManeuverType"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{89.60000000000001, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.41\[Degree]N 82.43\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1, 
+                 Key["StartingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.41\[Degree]N 82.44\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1, 
+                 Key["EndingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                StyleBox[
+                 RowBox[{"GeoPath", "[", 
+                   RowBox[{
+                    RowBox[{
+                    TagBox["GeoPosition", "SummaryHead"], "[", 
+                    TemplateBox[{
+                    GridBox[{{
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["3", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lat bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"38.41125`", ",", "38.41185`"}], "}"}], 
+                    "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lon bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "82.43577`"}], ",", 
+                    RowBox[{"-", "82.43239000000001`"}]}], "}"}], 
+                    "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, "SummaryPanel"], "]"}], ",",
+                     "\"TravelPath\""}], "]"}], FontFamily -> Dynamic[
+                   CurrentValue[{"StyleHints", "CodeFont"}]], 
+                 ShowStringCharacters -> True]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{1, 
+                 Key["Path"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{60, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}]}, {
+            Item[
+             Pane[
+              Annotation["Turn right onto 12th Street", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2, 
+                 Key["Description"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{380.8, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"0.532783`", "\"km\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2, 
+                 Key["Distance"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"63.93`", "\"s\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2, 
+                 Key["Time"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation["Right", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2, 
+                 Key["ManeuverType"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{89.60000000000001, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.41\[Degree]N 82.44\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2, 
+                 Key["StartingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.42\[Degree]N 82.44\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2, 
+                 Key["EndingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                StyleBox[
+                 RowBox[{"GeoPath", "[", 
+                   RowBox[{
+                    RowBox[{
+                    TagBox["GeoPosition", "SummaryHead"], "[", 
+                    TemplateBox[{
+                    GridBox[{{
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["4", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lat bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"38.41125`", ",", "38.41593`"}], "}"}], 
+                    "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lon bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "82.43708`"}], ",", 
+                    RowBox[{"-", "82.43577`"}]}], "}"}], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, "SummaryPanel"], "]"}], ",",
+                     "\"TravelPath\""}], "]"}], FontFamily -> Dynamic[
+                   CurrentValue[{"StyleHints", "CodeFont"}]], 
+                 ShowStringCharacters -> True]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{2, 
+                 Key["Path"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{60, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}]}, {
+            Item[
+             Pane[
+              Annotation["Turn left onto 8th Avenue", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3, 
+                 Key["Description"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{380.8, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"0.615418`", "\"km\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3, 
+                 Key["Distance"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"44.309`", "\"s\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3, 
+                 Key["Time"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation["Left", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3, 
+                 Key["ManeuverType"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{89.60000000000001, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.42\[Degree]N 82.44\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3, 
+                 Key["StartingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.41\[Degree]N 82.44\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3, 
+                 Key["EndingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                StyleBox[
+                 RowBox[{"GeoPath", "[", 
+                   RowBox[{
+                    RowBox[{
+                    TagBox["GeoPosition", "SummaryHead"], "[", 
+                    TemplateBox[{
+                    GridBox[{{
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["2", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lat bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"38.41474`", ",", "38.41593`"}], "}"}], 
+                    "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lon bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "82.44398`"}], ",", 
+                    RowBox[{"-", "82.43708`"}]}], "}"}], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, "SummaryPanel"], "]"}], ",",
+                     "\"TravelPath\""}], "]"}], FontFamily -> Dynamic[
+                   CurrentValue[{"StyleHints", "CodeFont"}]], 
+                 ShowStringCharacters -> True]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{3, 
+                 Key["Path"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{60, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}]}, {
+            Item[
+             Pane[
+              Annotation["Turn right onto 8th Street, WV 527", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4, 
+                 Key["Description"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{380.8, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"0.506566`", "\"km\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4, 
+                 Key["Distance"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"28.813`", "\"s\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4, 
+                 Key["Time"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation["Right", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4, 
+                 Key["ManeuverType"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{89.60000000000001, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.41\[Degree]N 82.44\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4, 
+                 Key["StartingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.42\[Degree]N 82.45\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4, 
+                 Key["EndingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                StyleBox[
+                 RowBox[{"GeoPath", "[", 
+                   RowBox[{
+                    RowBox[{
+                    TagBox["GeoPosition", "SummaryHead"], "[", 
+                    TemplateBox[{
+                    GridBox[{{
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["5", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lat bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"38.41474`", ",", "38.41919`"}], "}"}], 
+                    "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lon bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "82.44522`"}], ",", 
+                    RowBox[{"-", "82.44398`"}]}], "}"}], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, "SummaryPanel"], "]"}], ",",
+                     "\"TravelPath\""}], "]"}], FontFamily -> Dynamic[
+                   CurrentValue[{"StyleHints", "CodeFont"}]], 
+                 ShowStringCharacters -> True]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{4, 
+                 Key["Path"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{60, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}]}, {
+            Item[
+             Pane[
+              Annotation["Arrive at destination", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5, 
+                 Key["Description"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{380.8, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"0.`", "\"km\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5, 
+                 Key["Distance"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                RowBox[{"0.`", "\"s\""}]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5, 
+                 Key["Time"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{75, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation["Finish", 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5, 
+                 Key["ManeuverType"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{89.60000000000001, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.42\[Degree]N 82.45\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5, 
+                 Key["StartingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes["\"38.42\[Degree]N 82.45\[Degree]W\""], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5, 
+                 Key["EndingPoint"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{106, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}], 
+            Item[
+             Pane[
+              Annotation[
+               RawBoxes[
+                StyleBox[
+                 RowBox[{"GeoPath", "[", 
+                   RowBox[{
+                    RowBox[{
+                    TagBox["GeoPosition", "SummaryHead"], "[", 
+                    TemplateBox[{
+                    GridBox[{{
+                    GridBox[{{
+                    RowBox[{
+                    TagBox["\"Number of points: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["1", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lat bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"38.41919`", ",", "38.41919`"}], "}"}], 
+                    "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Lon bounds: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "82.44522`"}], ",", 
+                    RowBox[{"-", "82.44522`"}]}], "}"}], "SummaryItem"]}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                    AutoDelete -> False, 
+                    GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    GridBoxSpacings -> {
+                    "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                    BaseStyle -> {
+                    ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+                    GridBoxAlignment -> {
+                    "Columns" -> {{Left}}, "Rows" -> {{Top}}}, AutoDelete -> 
+                    False, GridBoxItemSize -> {
+                    "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                    BaselinePosition -> {1, 1}]}, "SummaryPanel"], "]"}], ",",
+                     "\"TravelPath\""}], "]"}], FontFamily -> Dynamic[
+                   CurrentValue[{"StyleHints", "CodeFont"}]], 
+                 ShowStringCharacters -> True]], 
+               TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][{5, 
+                 Key["Path"]}, "Item", False], "Mouse"], 
+              ImageSize -> {{60, Full}, Automatic}, 
+              ImageMargins -> {{5, 3}, {4, 5}}], 
+             ItemSize -> {Full, Automatic}]}}, 
+          BaseStyle -> {
+           ContextMenu -> 
+            Dynamic[TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger; 
+              Which[TypeSystem`NestedGrid`PackagePrivate`$lastOutputID =!= 
+                TypeSystem`NestedGrid`PackagePrivate`localHold[
+                 TypeSystem`NestedGrid`PackagePrivate`$outputID$$], {}, 
+                TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger === 
+                TypeSystem`NestedGrid`PackagePrivate`$lastContextMenuTrigger, 
+                TypeSystem`NestedGrid`PackagePrivate`$lastContextMenu, True, 
+                TypeSystem`NestedGrid`PackagePrivate`$lastContextMenuTrigger = 
+                 TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger; 
+                TypeSystem`NestedGrid`PackagePrivate`$lastContextMenu = 
+                 Block[{TypeSystem`NestedGrid`PackagePrivate`$globalScrollPos = \
+{TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$hPos$$}}, 
+                   
+                   With[{TypeSystem`NestedGrid`PackagePrivate`lastPath$ = 
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath, 
+                    TypeSystem`NestedGrid`PackagePrivate`lastPathType$ = 
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPathType, 
+                    TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$ = 
+                    TypeSystem`NestedGrid`PackagePrivate`$\
+lastPathIsLeafHeader, TypeSystem`NestedGrid`PackagePrivate`headerHidden$ = And[
+                    MatchQ[TypeSystem`NestedGrid`PackagePrivate`$lastPathType, 
+                    Alternatives["RowHeader", "ColumnHeader"]], 
+                    TypeSystem`NestedGrid`PackagePrivate`headerHiddenQ[
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath, 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$]], 
+                    TypeSystem`NestedGrid`PackagePrivate`allHidden$ = 
+                    TypeSystem`NestedGrid`PackagePrivate`allHiddenQ[
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath, 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                    TypeSystem`NestedGrid`PackagePrivate`anyHidden$ = 
+                    TypeSystem`NestedGrid`PackagePrivate`anyHiddenQ[
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath, 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                    TypeSystem`NestedGrid`PackagePrivate`sortDirection$ = 
+                    TypeSystem`NestedGrid`PackagePrivate`columnSortDirection[
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath, 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$[
+                    "SortPaths"], 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$[
+                    "SortDirections"]], 
+                    TypeSystem`NestedGrid`PackagePrivate`haveData$ = Not[
+                    FailureQ[
+                    TypeSystem`NestedGrid`PackagePrivate`datasetInitialData[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$]]], 
+                    TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$ = Not[
+                    FreeQ[
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath, Keys]]}, 
+                    Join[{
+                    If[
+                    Or[
+                    Not[TypeSystem`NestedGrid`PackagePrivate`haveData$], 
+                    Not[TypeSystem`NestedGrid`PackagePrivate`anyHidden$], 
+                    TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$], 
+                    Nothing, 
+                    MenuItem[
+                    "Show " <> 
+                    Which[TypeSystem`NestedGrid`PackagePrivate`lastPathType$ == 
+                    "Item", "", 
+                    TypeSystem`NestedGrid`PackagePrivate`lastPathType$ == 
+                    "RowHeader", "Row", 
+                    TypeSystem`NestedGrid`PackagePrivate`lastPathType$ == 
+                    "ColumnHeader", "Column", True, ""], 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`updateHiddenItems[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][
+                    TypeSystem`NestedGrid`PackagePrivate`lastPath$, 
+                    "remove"]], MenuEvaluator -> Automatic]], 
+                    If[
+                    Or[
+                    Not[TypeSystem`NestedGrid`PackagePrivate`haveData$], 
+                    TypeSystem`NestedGrid`PackagePrivate`pathEmptyQ[
+                    TypeSystem`NestedGrid`PackagePrivate`$lastPath, 
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$], 
+                    TypeSystem`NestedGrid`PackagePrivate`isKeyDummy$, 
+                    And[
+                    TypeSystem`NestedGrid`PackagePrivate`allHidden$, 
+                    TypeSystem`NestedGrid`PackagePrivate`headerHidden$]], 
+                    Nothing, 
+                    MenuItem[
+                    "Hide " <> 
+                    Which[TypeSystem`NestedGrid`PackagePrivate`lastPathType$ == 
+                    "Item", "", 
+                    TypeSystem`NestedGrid`PackagePrivate`lastPathType$ == 
+                    "RowHeader", "Row", 
+                    TypeSystem`NestedGrid`PackagePrivate`lastPathType$ == 
+                    "ColumnHeader", "Column", True, ""], 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`updateHiddenItems[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]][
+                    TypeSystem`NestedGrid`PackagePrivate`lastPath$, "add"]], 
+                    MenuEvaluator -> Automatic]], Delimiter}, 
+                    If[
+                    And[TypeSystem`NestedGrid`PackagePrivate`haveData$, 
+                    MatchQ[TypeSystem`NestedGrid`PackagePrivate`lastPathType$, 
+                    Alternatives["ColumnHeader", "KeyDummy"]], 
+                    TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$, 
+                    Not[TypeSystem`NestedGrid`PackagePrivate`allHidden$]], {
+                    If[
+                    TypeSystem`NestedGrid`PackagePrivate`sortDirection$ =!= 
+                    "Ascending", 
+                    MenuItem["Sort", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`updateSort[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+                    TypeSystem`NestedGrid`PackagePrivate`lastPath$, 
+                    "Ascending"]], MenuEvaluator -> Automatic], Nothing], 
+                    If[
+                    TypeSystem`NestedGrid`PackagePrivate`sortDirection$ =!= 
+                    "Descending", 
+                    MenuItem["Reverse Sort", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`updateSort[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+                    TypeSystem`NestedGrid`PackagePrivate`lastPath$, 
+                    "Descending"]], MenuEvaluator -> Automatic], Nothing], 
+                    If[
+                    TypeSystem`NestedGrid`PackagePrivate`sortDirection$ =!= 
+                    None, 
+                    MenuItem["Unsort", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`updateSort[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`localHold[
+                    TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+                    TypeSystem`NestedGrid`PackagePrivate`lastPath$, None]], 
+                    MenuEvaluator -> Automatic], Nothing], Delimiter}, {}], {
+                    MenuItem["Copy Position to Clipboard", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[
+                    TypeSystem`NestedGrid`PackagePrivate`copyClip]], 
+                    MenuEvaluator -> Automatic], 
+                    If[TypeSystem`NestedGrid`PackagePrivate`haveData$, 
+                    MenuItem["Copy Data to Clipboard", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`copyClip]], 
+                    MenuEvaluator -> Automatic], Nothing], Delimiter, 
+                    MenuItem["Paste Position in New Cell", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentPosition[
+                    TypeSystem`NestedGrid`PackagePrivate`cellPaste]], 
+                    MenuEvaluator -> Automatic], 
+                    If[TypeSystem`NestedGrid`PackagePrivate`haveData$, 
+                    MenuItem["Paste Data in New Cell", 
+                    KernelExecute[
+                    TypeSystem`NestedGrid`PackagePrivate`toCurrentData[
+                    TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+                    TypeSystem`NestedGrid`PackagePrivate`cellPaste]], 
+                    MenuEvaluator -> Automatic], Nothing]}]]]]], FontFamily -> 
+            "Source Sans Pro", FontSize -> 14, FontWeight -> Plain}, Dividers -> 
+          All, FrameStyle -> GrayLevel[0.7490196078431373], 
+          Spacings -> {0, 0}, Alignment -> Left, 
+          BaseStyle -> {
+           FontFamily -> "Source Sans Pro", FontSize -> 14, FontWeight -> 
+            Plain}], LineBreakWithin -> False, ContextMenu -> {}, NumberMarks -> 
+         False, ShowAutoStyles -> False]], 
+      TypeSystem`NestedGrid`PackagePrivate`initialQ = True}, 
+     Dynamic[
+      TypeSystem`NestedGrid`PackagePrivate`setupViewPath[
+      TypeSystem`NestedGrid`PackagePrivate`$path$$, If[
+         Not[TypeSystem`NestedGrid`PackagePrivate`initialQ], 
+         Module[{
+          TypeSystem`NestedGrid`PackagePrivate`tmpGrid$ = $Failed, 
+           TypeSystem`NestedGrid`PackagePrivate`tmpData$ = 
+           TypeSystem`NestedGrid`PackagePrivate`datasetData[
+            TypeSystem`NestedGrid`PackagePrivate`$state$$]}, 
+          TypeSystem`NestedGrid`PackagePrivate`tmpGrid$ = If[
+             FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpData$], 
+             TypeSystem`NestedGrid`PackagePrivate`renderedGrid, 
+             TypeSystem`NestedGrid`PackagePrivate`renderGrid[
+             TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+              TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+              TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+              TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+              TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+              TypeSystem`NestedGrid`PackagePrivate`localHold[
+              TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+             TypeSystem`NestedGrid`PackagePrivate`tmpData$]]; If[
+            Not[
+             FailureQ[TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]], 
+            TypeSystem`NestedGrid`PackagePrivate`renderedGrid = 
+            TypeSystem`NestedGrid`PackagePrivate`tmpGrid$]; Null]]; 
+       TypeSystem`NestedGrid`PackagePrivate`initialQ = False; 
+       TypeSystem`NestedGrid`PackagePrivate`$vPos$$; 
+       TypeSystem`NestedGrid`PackagePrivate`$hPos$$; If[
+         FailureQ[TypeSystem`NestedGrid`PackagePrivate`renderedGrid], 
+         TypeSystem`SparseGrid[
+          TypeSystem`H["(data no longer present)"]], 
+         TypeSystem`NestedGrid`PackagePrivate`renderedGrid]], 
+      TrackedSymbols :> {
+       TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+        TypeSystem`NestedGrid`PackagePrivate`$hPos$$}], 
+     DynamicModuleValues :> {}], 
+    TypeSystem`NestedGrid`PackagePrivate`$topBar$$ = Dynamic[
+     TypeSystem`NestedGrid`PackagePrivate`makeFramedBar[
+      TypeSystem`PackageScope`SubViewPathbar[
+      TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+       TypeSystem`NestedGrid`PackagePrivate`updateState[
+       TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+        TypeSystem`NestedGrid`PackagePrivate`$path$$, 
+        TypeSystem`NestedGrid`PackagePrivate`$vPos$$, 
+        TypeSystem`NestedGrid`PackagePrivate`$hPos$$, 
+        TypeSystem`NestedGrid`PackagePrivate`$grid$$, 
+        TypeSystem`NestedGrid`PackagePrivate`localHold[
+        TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]]], 
+     TrackedSymbols :> {TypeSystem`NestedGrid`PackagePrivate`$path$$}], 
+    TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$ = Style[
+     Framed[
+      Dynamic[
+       Replace[
+       TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$, {
+        TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+           TypeSystem`NestedGrid`PackagePrivate`localHold[
+           TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][Null, 
+           Blank[]] -> "", TypeSystem`NestedGrid`PackagePrivate`$SliceMarker[
+           TypeSystem`NestedGrid`PackagePrivate`localHold[
+           TypeSystem`NestedGrid`PackagePrivate`$outputID$$]][
+           Pattern[TypeSystem`NestedGrid`PackagePrivate`path$, 
+            Blank[]], 
+           Pattern[TypeSystem`NestedGrid`PackagePrivate`pathType$, 
+            Blank[]], 
+           Pattern[TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$, 
+            Blank[]]] :> (
+          Increment[TypeSystem`NestedGrid`PackagePrivate`$contextMenuTrigger]; 
+          TypeSystem`NestedGrid`PackagePrivate`$lastPath = 
+           TypeSystem`NestedGrid`PackagePrivate`path$; 
+          TypeSystem`NestedGrid`PackagePrivate`$lastPathType = 
+           TypeSystem`NestedGrid`PackagePrivate`pathType$; 
+          TypeSystem`NestedGrid`PackagePrivate`$lastPathIsLeafHeader = 
+           TypeSystem`NestedGrid`PackagePrivate`isLeafHeader$; 
+          TypeSystem`NestedGrid`PackagePrivate`$lastOutputID = 
+           TypeSystem`NestedGrid`PackagePrivate`localHold[
+            TypeSystem`NestedGrid`PackagePrivate`$outputID$$]; 
+          TypeSystem`NestedGrid`PackagePrivate`makePathTrail[
+           TypeSystem`NestedGrid`PackagePrivate`path$, 
+            TypeSystem`NestedGrid`PackagePrivate`makePathElements]), Null :> 
+         Spacer[10], Blank[] :> Spacer[10]}], 
+       TrackedSymbols :> {
+        TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$}], FrameStyle -> 
+      None, ImageMargins -> 0, FrameMargins -> 0, Alignment -> Top, 
+      ImageSize -> {Automatic, 15}], FontSize -> 1], 
+    TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$ = Null}, 
+    DynamicWrapperBox[
+     DynamicBox[ToBoxes[
+       Dataset`DatasetContent[
+       2, "Path" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$path$$], 
+        "Grid" -> Hold[TypeSystem`NestedGrid`PackagePrivate`$grid$$], "State" -> 
+        Hold[TypeSystem`NestedGrid`PackagePrivate`$state$$], "VPos" -> 
+        Hold[TypeSystem`NestedGrid`PackagePrivate`$vPos$$], "HPos" -> 
+        Hold[TypeSystem`NestedGrid`PackagePrivate`$hPos$$], "TopBar" -> 
+        Hold[TypeSystem`NestedGrid`PackagePrivate`$topBar$$], "BottomBar" -> 
+        Hold[TypeSystem`NestedGrid`PackagePrivate`$bottomBar$$], "OutputID" -> 
+        Hold[
+          TypeSystem`NestedGrid`PackagePrivate`localHold[
+          TypeSystem`NestedGrid`PackagePrivate`$outputID$$]]], StandardForm],
+      ImageSizeCache->{950., {199.13403328722342`, 204.86596671277658`}},
+      TrackedSymbols:>{
+       TypeSystem`NestedGrid`PackagePrivate`$state$$, 
+        TypeSystem`NestedGrid`PackagePrivate`$grid$$}], 
+     TypeSystem`NestedGrid`PackagePrivate`mouseAnnotation$$ = 
+     MouseAnnotation[],
+     ImageSizeCache->{950., {199.13403328722342`, 204.86596671277658`}}],
+    BaseStyle->{LineBreakWithin -> False},
+    DynamicModuleValues:>{},
+    Initialization:>(TypeSystem`NestedGrid`PackagePrivate`$outputID$$ = 
+     CreateUUID[]),
+    UnsavedVariables:>{TypeSystem`NestedGrid`PackagePrivate`$outputID$$}],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  Dataset`InterpretDataset[1],
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{{3.8620696264463196`*^9, 3.8620696494990516`*^9}},
+ CellLabel->"Out[10]=",ExpressionUUID->"b2e693d6-0695-4c13-8f22-a47e3ba8d54c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TravelDirections", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+      "\"\<1234 Charleston Avenue Huntington, WV 25701\>\"", "]"}], ",", 
+     RowBox[{
+      RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+      "\"\<1200 Huntington, WV\>\"", "]"}]}], "}"}], ",", 
+   "\"\<TravelPath\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.8620695721593695`*^9, 3.8620696319494677`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"9270e09b-fe86-47f9-a17e-353758b2e796"],
+
+Cell[BoxData[
+ RowBox[{"GeoPath", "[", 
+  RowBox[{
+   InterpretationBox[
+    RowBox[{
+     TagBox["GeoPosition",
+      "SummaryHead"], "[", 
+     DynamicModuleBox[{Typeset`open$$ = False, Typeset`embedState$$ = 
+      "Ready"}, 
+      TemplateBox[{
+        PaneSelectorBox[{False -> GridBox[{{
+              PaneBox[
+               ButtonBox[
+                DynamicBox[
+                 FEPrivate`FrontEndResource["FEBitmaps", "SummaryBoxOpener"]],
+                 ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+               Dynamic[{
+                 Automatic, 
+                  3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                   Magnification])}]], 
+              GraphicsBox[{
+                RGBColor[0, 0, 
+                 NCache[
+                  Rational[2, 3], 0.6666666666666666]], 
+                PointSize[
+                 NCache[
+                  Rational[1, 16], 0.0625]], 
+                
+                PointBox[{{-82.43242924996083, 
+                 38.41183424998954}, {-82.43403299996082, 
+                 38.411536499989545`}, {-82.43579712496083, 
+                 38.41123874998954}, {-82.43611787496083, 
+                 38.41223124998954}, {-82.43643862496083, 
+                 38.41391849998954}, {-82.43708012496083, 
+                 38.41590349998954}, {-82.44397624996083, 
+                 38.41471249998954}, {-82.44445737496082, 
+                 38.41639974998954}, {-82.44461774996083, 
+                 38.41709449998954}, {-82.44477812496082, 
+                 38.41778924998954}, {-82.44525924996083, 
+                 38.41917874998954}}]}, ImageSize -> 
+               Dynamic[{{2}, 1} ((5. CurrentValue["FontCapHeight"])/
+                  AbsoluteCurrentValue[Magnification])]], 
+              GridBox[{{
+                 RowBox[{
+                   TagBox["\"Number of points: \"", "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox["15", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox["\"Points per list: \"", "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"3", ",", "4", ",", "2", ",", "5", ",", "1"}], 
+                    "}"}], "SummaryItem"]}]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+            AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}], True -> GridBox[{{
+              PaneBox[
+               ButtonBox[
+                DynamicBox[
+                 FEPrivate`FrontEndResource["FEBitmaps", "SummaryBoxCloser"]],
+                 ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+               Dynamic[{
+                 Automatic, 
+                  3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                   Magnification])}]], 
+              GraphicsBox[{
+                RGBColor[0, 0, 
+                 NCache[
+                  Rational[2, 3], 0.6666666666666666]], 
+                PointSize[
+                 NCache[
+                  Rational[1, 16], 0.0625]], 
+                
+                PointBox[{{-82.43242924996083, 
+                 38.41183424998954}, {-82.43403299996082, 
+                 38.411536499989545`}, {-82.43579712496083, 
+                 38.41123874998954}, {-82.43611787496083, 
+                 38.41223124998954}, {-82.43643862496083, 
+                 38.41391849998954}, {-82.43708012496083, 
+                 38.41590349998954}, {-82.44397624996083, 
+                 38.41471249998954}, {-82.44445737496082, 
+                 38.41639974998954}, {-82.44461774996083, 
+                 38.41709449998954}, {-82.44477812496082, 
+                 38.41778924998954}, {-82.44525924996083, 
+                 38.41917874998954}}]}, ImageSize -> 
+               Dynamic[{{2}, 1} ((5. CurrentValue["FontCapHeight"])/
+                  AbsoluteCurrentValue[Magnification])]], 
+              GridBox[{{
+                 RowBox[{
+                   TagBox["\"Number of points: \"", "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox["15", "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox["\"Points per list: \"", "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"3", ",", "4", ",", "2", ",", "5", ",", "1"}], 
+                    "}"}], "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox["\"Lat bounds: \"", "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox[
+                    RowBox[{"{", 
+                    RowBox[{"38.41125`", ",", "38.41919`"}], "}"}], 
+                    "SummaryItem"]}]}, {
+                 RowBox[{
+                   TagBox["\"Lon bounds: \"", "SummaryItemAnnotation"], 
+                   "\[InvisibleSpace]", 
+                   TagBox[
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "82.44522`"}], ",", 
+                    RowBox[{"-", "82.43239000000001`"}]}], "}"}], 
+                    "SummaryItem"]}]}}, 
+               GridBoxAlignment -> {
+                "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+               False, GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               GridBoxSpacings -> {
+                "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+               BaseStyle -> {
+                ShowStringCharacters -> False, NumberMarks -> False, 
+                 PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+            GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}}, 
+            AutoDelete -> False, 
+            GridBoxItemSize -> {
+             "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+            BaselinePosition -> {1, 1}]}, 
+         Dynamic[Typeset`open$$], ImageSize -> Automatic]},
+       "SummaryPanel"],
+      DynamicModuleValues:>{}], "]"}],
+    GeoPosition[{{{38.41185, -82.43239000000001}, {
+      38.411570000000005`, -82.43404000000001}, {38.41125, -82.43577}}, {{
+      38.41125, -82.43577}, {38.41227, -82.43607}, {38.41393, -82.43651}, {
+      38.41593, -82.43708}}, {{38.41593, -82.43708}, {
+      38.41474, -82.44398}}, {{38.41474, -82.44398}, {38.41641, -82.44445}, {
+      38.41706, -82.44466}, {38.41774, -82.44481}, {38.41919, -82.44522}}, {{
+      38.41919, -82.44522}}}],
+    Editable->False,
+    SelectWithContents->True,
+    Selectable->False], ",", "\<\"TravelPath\"\>"}], "]"}]], "Output",
+ CellChangeTimes->{3.8620696335210395`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"9498acb9-8763-4217-8575-ba56ea0e7656"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TravelDirections", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+      "\"\<1234 Charleston Avenue Huntington, WV 25701\>\"", "]"}], ",", 
+     RowBox[{
+      RowBox[{"Interpreter", "[", "\"\<StreetAddress\>\"", "]"}], "[", 
+      "\"\<1200 Huntington, WV\>\"", "]"}]}], "}"}], ",", 
+   "\"\<ManeuverGrid\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.8620695721593695`*^9, 3.8620696319494677`*^9}, {
+  3.8620697230402565`*^9, 3.862069726576621*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"ac2985cf-41da-42f6-becc-ccd3ed9afee4"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     InterpretationBox[Cell[BoxData[
+       FormBox["\<\"Continue onto Charleston Avenue\"\>", TextForm]], 
+       "InlineText",ExpressionUUID->"2093a7be-9b1a-4ee4-a516-989cf3d75901"],
+      Text["Continue onto Charleston Avenue"]], 
+     TagBox[
+      FormBox[
+       TemplateBox[{
+        "0.3021469999999999989`3.4802182865212155", "\"km\"", "kilometers", 
+         "\"Kilometers\""},
+        "QuantityTF"],
+       TraditionalForm],
+      TraditionalForm,
+      Editable->True]},
+    {
+     InterpretationBox[Cell[BoxData[
+       FormBox["\<\"Turn right onto 12th Street\"\>", TextForm]], 
+       "InlineText",ExpressionUUID->"e55c4e7c-c61c-4d0b-9dd5-34ef86d61e16"],
+      Text["Turn right onto 12th Street"]], 
+     TagBox[
+      FormBox[
+       TemplateBox[{
+        "0.5327830000000000066`3.7265503589475686", "\"km\"", "kilometers", 
+         "\"Kilometers\""},
+        "QuantityTF"],
+       TraditionalForm],
+      TraditionalForm,
+      Editable->True]},
+    {
+     InterpretationBox[Cell[BoxData[
+       FormBox["\<\"Turn left onto 8th Avenue\"\>", TextForm]], "InlineText",
+       ExpressionUUID->"5614d30a-7dd2-4af4-8489-b3299352b178"],
+      Text["Turn left onto 8th Avenue"]], 
+     TagBox[
+      FormBox[
+       TemplateBox[{
+        "0.6154180000000000206`3.789170194521695", "\"km\"", "kilometers", 
+         "\"Kilometers\""},
+        "QuantityTF"],
+       TraditionalForm],
+      TraditionalForm,
+      Editable->True]},
+    {
+     InterpretationBox[Cell[BoxData[
+       FormBox["\<\"Turn right onto 8th Street, WV 527\"\>", TextForm]], 
+       "InlineText",ExpressionUUID->"26b1d7a7-fc32-4cc4-b495-ea801376dcc7"],
+      Text["Turn right onto 8th Street, WV 527"]], 
+     TagBox[
+      FormBox[
+       TemplateBox[{
+        "0.5065659999999999608`3.704636037195724", "\"km\"", "kilometers", 
+         "\"Kilometers\""},
+        "QuantityTF"],
+       TraditionalForm],
+      TraditionalForm,
+      Editable->True]},
+    {
+     InterpretationBox[Cell[BoxData[
+       FormBox["\<\"Arrive at destination\"\>", TextForm]], "InlineText",
+       ExpressionUUID->"ff78a317-64e6-455c-97da-6aeff8984184"],
+      Text["Arrive at destination"]], ""}
+   },
+   AutoDelete->False,
+   FrameStyle->GrayLevel[0.85],
+   GridBoxAlignment->{"Columns" -> {Left, "."}},
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{3.8620697283820395`*^9},
+ CellLabel->"Out[11]=",ExpressionUUID->"5bdf59cb-c8f9-4dd2-9b94-09882c3fa9ac"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoNearest", "[", 
+  RowBox[{"All", ",", "Here"}], "]"}]], "Input",
+ CellChangeTimes->{{3.8620699590574636`*^9, 3.8620700185753965`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"85a3dc38-f1ab-4078-b0a7-85015dd9c539"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{"\"West Virginia, United States\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"AdministrativeDivision\"", ",", 
+         RowBox[{"{", 
+           RowBox[{"\"WestVirginia\"", ",", "\"UnitedStates\""}], "}"}]}], 
+       "]"}], "\"Entity[\\\"AdministrativeDivision\\\", \
+{\\\"WestVirginia\\\", \\\"UnitedStates\\\"}]\"", 
+     "\"administrative division\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"West Virginia Southern District Court\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{
+        "\"DistrictCourt\"", ",", "\"WestVirginiaSouthernDistrictCourt\""}], 
+       "]"}], "\"Entity[\\\"DistrictCourt\\\", \
+\\\"WestVirginiaSouthernDistrictCourt\\\"]\"", "\"district court\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Huntington-Ashland, WV-KY-OH\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{
+        "\"MetropolitanArea\"", ",", 
+         "\"HuntingtonAshlandWVKYOHUnitedStatesMetro\""}], "]"}], 
+     "\"Entity[\\\"MetropolitanArea\\\", \
+\\\"HuntingtonAshlandWVKYOHUnitedStatesMetro\\\"]\"", "\"metropolitan area\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Huntington\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"City\"", ",", 
+         RowBox[{"{", 
+           
+           RowBox[{"\"Huntington\"", ",", "\"WestVirginia\"", ",", 
+             "\"UnitedStates\""}], "}"}]}], "]"}], 
+     "\"Entity[\\\"City\\\", {\\\"Huntington\\\", \\\"WestVirginia\\\", \
+\\\"UnitedStates\\\"}]\"", "\"city\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"25701\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"ZIPCode\"", ",", "\"25701\""}], "]"}], 
+     "\"Entity[\\\"ZIPCode\\\", \\\"25701\\\"]\"", "\"ZIP Code\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"North America\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"GeographicRegion\"", ",", "\"NorthAmerica\""}], "]"}], 
+     "\"Entity[\\\"GeographicRegion\\\", \\\"NorthAmerica\\\"]\"", 
+     "\"geographic region\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"world\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"GeographicRegion\"", ",", "\"World\""}], "]"}], 
+     "\"Entity[\\\"GeographicRegion\\\", \\\"World\\\"]\"", 
+     "\"geographic region\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"West Virginia 3rd Congressional District\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{
+        "\"USCongressionalDistrict\"", ",", "\"WestVirginia:District3\""}], 
+       "]"}], "\"Entity[\\\"USCongressionalDistrict\\\", \
+\\\"WestVirginia:District3\\\"]\"", "\"US congressional district\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"United States\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"Country\"", ",", "\"UnitedStates\""}], "]"}], 
+     "\"Entity[\\\"Country\\\", \\\"UnitedStates\\\"]\"", "\"country\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"Cabell County, West Virginia, United States\"", 
+     RowBox[{"Entity", "[", 
+       RowBox[{"\"AdministrativeDivision\"", ",", 
+         RowBox[{"{", 
+           
+           RowBox[{"\"CabellCounty\"", ",", "\"WestVirginia\"", ",", 
+             "\"UnitedStates\""}], "}"}]}], "]"}], 
+     "\"Entity[\\\"AdministrativeDivision\\\", {\\\"CabellCounty\\\", \
+\\\"WestVirginia\\\", \\\"UnitedStates\\\"}]\"", 
+     "\"administrative division\""},
+    "Entity"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.862069962549588*^9, 3.8620699906125617`*^9}, 
+   3.8620700271221857`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"d007d079-810f-4e2d-8530-55f73d9e8ccf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"UnitConvert", "[", 
+  RowBox[{
+   TemplateBox[{"32.", "\"ft\"", "feet", "\"Feet\""},
+    "Quantity"], ",", "\"\<Meters\>\""}], "]"}]], "Input",
+ CellChangeTimes->{{3.862070583393179*^9, 3.8620706118547764`*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"51e647aa-ea4d-480f-b204-b472f8f21ef7"],
+
+Cell[BoxData[
+ TemplateBox[{"9.7536`", "\"m\"", "meters", "\"Meters\""},
+  "Quantity"]], "Output",
+ CellChangeTimes->{{3.862070606194174*^9, 3.862070612293087*^9}},
+ CellLabel->"Out[16]=",ExpressionUUID->"04ac47d7-5a0f-4a69-811f-ea39099cc52f"]
+}, Open  ]]
+},
+WindowSize->{571.8, 524.4},
+WindowMargins->{{284.4, Automatic}, {18, Automatic}},
+TaggingRules-><|"TryRealOnly" -> False|>,
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"105c144a-3d66-43f1-b74d-9176f8561f22"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 5197, 111, 71, "Input",ExpressionUUID->"37fe0321-46b2-4582-8f3b-8bfd2c22a093"],
+Cell[CellGroupData[{
+Cell[5780, 135, 4866, 106, 50, "Input",ExpressionUUID->"2cee2bad-91e8-4a57-8c01-0017d6cb48e5"],
+Cell[10649, 243, 500, 11, 147, "Output",ExpressionUUID->"a069c26b-0d72-49cf-addc-0a7510e0d920"]
+}, Open  ]],
+Cell[11164, 257, 215, 5, 28, "Input",ExpressionUUID->"9cf42b48-8278-432e-b1a0-a7bb156c47e1"],
+Cell[11382, 264, 211, 4, 28, "Input",ExpressionUUID->"d397f1d1-da82-4b43-acd4-133ba1b70bcb"],
+Cell[CellGroupData[{
+Cell[11618, 272, 311, 5, 48, "Input",ExpressionUUID->"02e89e6c-a934-4684-926c-e816f89963fd"],
+Cell[11932, 279, 294, 6, 32, "Output",ExpressionUUID->"0faf8578-1364-48e5-bd93-842ee357e51d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12263, 290, 532, 11, 86, "Input",ExpressionUUID->"083af840-52f5-448d-8a7f-2c6c2050110f"],
+Cell[12798, 303, 13268, 249, 66, "Output",ExpressionUUID->"5a765269-b537-4bc2-8225-6675ba8c8c1b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26103, 557, 581, 13, 105, "Input",ExpressionUUID->"5ae23398-a036-42d8-86ec-f92dd1b9e765"],
+Cell[26687, 572, 65795, 1251, 423, "Output",ExpressionUUID->"b2e693d6-0695-4c13-8f22-a47e3ba8d54c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92519, 1828, 586, 13, 105, "Input",ExpressionUUID->"9270e09b-fe86-47f9-a17e-353758b2e796"],
+Cell[93108, 1843, 7702, 159, 75, "Output",ExpressionUUID->"9498acb9-8763-4217-8575-ba56ea0e7656"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100847, 2007, 640, 14, 105, "Input",ExpressionUUID->"ac2985cf-41da-42f6-becc-ccd3ed9afee4"],
+Cell[101490, 2023, 2586, 71, 128, "Output",ExpressionUUID->"5bdf59cb-c8f9-4dd2-9b94-09882c3fa9ac"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[104113, 2099, 240, 4, 28, "Input",ExpressionUUID->"85a3dc38-f1ab-4078-b0a7-85015dd9c539"],
+Cell[104356, 2105, 3441, 79, 134, "Output",ExpressionUUID->"d007d079-810f-4e2d-8530-55f73d9e8ccf"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[107834, 2189, 314, 6, 37, "Input",ExpressionUUID->"51e647aa-ea4d-480f-b204-b472f8f21ef7"],
+Cell[108151, 2197, 243, 4, 63, "Output",ExpressionUUID->"04ac47d7-5a0f-4a69-811f-ea39099cc52f"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
