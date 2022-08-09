@@ -10,18 +10,32 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[       822,         34]
-NotebookOptionsPosition[       561,         21]
-NotebookOutlinePosition[       962,         37]
-CellTagsIndexPosition[       919,         34]
+NotebookDataLength[      1461,         52]
+NotebookOptionsPosition[       937,         34]
+NotebookOutlinePosition[      1374,         51]
+CellTagsIndexPosition[      1331,         48]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
+Cell["Brute Force", "Title",
+ CellChangeTimes->{{3.867696810743625*^9, 3.8676968125656943`*^9}, {
+  3.867697142623295*^9, 
+  3.867697143669359*^9}},ExpressionUUID->"6dab74b8-9450-4229-8cb4-\
+7d7167c8c624"],
+
+Cell["", "WolframAlphaShort",
+ CellChangeTimes->{
+  3.8676997190698423`*^9},ExpressionUUID->"6e7e8ef8-05cf-4b89-af00-\
+100e16d5265f"]
+}, Open  ]]
 },
-WindowSize->{1920, 1117},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
-FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (March 14, 2020)",
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (June 16, 2022)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"ba79ce78-2a42-4f69-b77b-1cc3023c18c7"
 ]
@@ -36,9 +50,11 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 205, 4, 122, "Title",ExpressionUUID->"6dab74b8-9450-4229-8cb4-7d7167c8c624"],
+Cell[788, 28, 133, 3, 39, "WolframAlphaShort",ExpressionUUID->"6e7e8ef8-05cf-4b89-af00-100e16d5265f"]
+}, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
